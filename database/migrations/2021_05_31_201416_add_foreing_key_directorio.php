@@ -14,9 +14,9 @@ class AddForeingKeyDirectorio extends Migration
     public function up()
     {
         Schema::table('directorio', function(Blueprint $table){
-            $table->unsignedBigInteger('id_tipo_persona')->after('id');
+            $table->unsignedBigInteger('id_tipo_contacto')->after('id');
 
-            $table->foreign('id_tipo_persona')->references('id')->on('tipo_persona');
+            $table->foreign('id_tipo_contacto')->references('id')->on('tipo_contacto');
         });
     }
 
@@ -28,8 +28,8 @@ class AddForeingKeyDirectorio extends Migration
     public function down()
     {
         Schema::table('directorio', function(Blueprint $table){
-            $table->dropColumn('id_tipo_persona');
-            $table->dropForeign('directorio_id_tipo_persona_foreign');
+            $table->dropColumn('id_tipo_contacto');
+            $table->dropForeign('directorio_id_tipo_contacto_foreign');
         });
     }
 }

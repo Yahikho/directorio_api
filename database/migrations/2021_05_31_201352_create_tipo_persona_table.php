@@ -13,7 +13,7 @@ class CreateTipoPersonaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_persona', function (Blueprint $table) {
+        Schema::create('tipo_contacto', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion')->unique();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTipoPersonaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_persona');
+        Schema::dropIfExists('tipo_contacto');
     }
 }

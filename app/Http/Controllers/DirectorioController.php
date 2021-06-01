@@ -2,35 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Directorio;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 class DirectorioController extends Controller
-{
+{   
     public function index(){
 
-
-        $diretotios = Directorio::all();
-
-        return view('directorio.index', ['diretotios'=>$diretotios]);
-
+        return view('directorio.index');
     }
 
     public function create(){
 
         return view('directorio.create');
-
-    }
-
-    public function store(Request $request){
-
-        $directorio = $request->all();
-        Directorio::create($directorio);
-
-        return response()->json([
-            'repouse' => true,
-            'message' => "Directorio creado"
-        ]);
-
     }
 }

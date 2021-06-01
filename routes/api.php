@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\ApiDirectorioController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DirectorioController;
-use App\Http\Controllers\TipoPersonaController;
-use App\Models\Directorio;
+use App\Http\Controllers\ApiTipoContactoController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('personas',TipoPersonaController::class);
+Route::apiResource('tipos',ApiTipoContactoController::class);
 
-Route::resource('direcrorios',DirectorioController::class);
+Route::apiResource('directorios',ApiDirectorioController::class);

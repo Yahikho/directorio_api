@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DirectorioController;
+use App\Http\Controllers\TipoContactoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/directorios');
 
 Route::resource('directorios', DirectorioController::class);
+
+Route::resource('tipos', TipoContactoController::class);
 
 

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\TipoPersona;
+use App\Models\TipoContacto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TipoPersonaFactory extends Factory
+class TipoContactoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = TipoPersona::class;
+    protected $model = TipoContacto::class;
 
     /**
      * Define the model's default state.

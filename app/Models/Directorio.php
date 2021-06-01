@@ -11,7 +11,7 @@ class Directorio extends Model
     use HasFactory;
 
     protected $fillable =[
-        'id_tipo_persona',
+        'id_tipo_contacto',
         'nombre',
         'telefono',
         'email',
