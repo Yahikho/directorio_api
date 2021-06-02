@@ -1,4 +1,4 @@
-<strong>Hola, Soy Jhon y este es un pequeño proyecto para medir mis conocimientos</strong>
+<strong>Hola,</strong>
 
 Directorio_api es un CRUD que funciona a partir de servicio API REST y consta de una UI muy basica, a continucion les mostrare como descargarlo y como funciona hasta el moneto
 
