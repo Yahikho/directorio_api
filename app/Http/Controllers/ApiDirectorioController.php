@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CrearDirectorioRequest;
 use Illuminate\Http\Request;
 use App\Models\Directorio;
+use GrahamCampbell\ResultType\Result;
 use Illuminate\Support\Facades\DB;
 
 class ApiDirectorioController extends Controller
@@ -12,13 +14,13 @@ class ApiDirectorioController extends Controller
 
         //$diretotios = Directorio::all();
         $diretotios = DB::table('directorio')
-            ->select('directorio.nombre','tipo_contacto.descripcion','directorio.telefono','directorio.email','directorio.direccion')
+            ->select('directorio.id','directorio.nombre','tipo_contacto.descripcion','directorio.telefono','directorio.email','directorio.direccion')
             ->join('tipo_contacto','directorio.id_tipo_contacto','=','tipo_contacto.id')
             ->get();
         
         return response()->json([
             'directorios' => $diretotios
-        ]);
+        ],200);
     }
 
     public function create(){
@@ -27,18 +29,40 @@ class ApiDirectorioController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(CrearDirectorioRequest $request){
 
         $directorio = $request->all();
         Directorio::create($directorio);
 
         return response()->json([
-            'respuesta' => true,
-            'mensaje' => "Directorio creado",
+            'respounse' => true,
+            'message' => "Directorio creado",
             'directorio' => $directorio
-        ]);
+        ],200);
 
     }
 
-    public function update(){}
+    public function destroy($directorio){
+
+        Directorio::destroy($directorio);
+
+        return response()->json([
+            'respounse' => true,
+            'message' => "Directorio eliminado"
+        ],200);
+
+    }
+    
+    public function update(Request $request, Directorio $directorio){
+        
+        $input = $request->all();
+        $directorio->update($input);
+
+        return (array($directorio, $input));
+        // return response()->json([
+        //     'response' => true,
+        //     'message' => "Directorio Actualizado"
+        // ],200);
+
+    }
 }

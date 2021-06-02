@@ -8,7 +8,7 @@
 <p>Tipo contacto: <strong>{{$tipo->descripcion}}</strong></p>
 <br>
 <form id="borrarTipo">
-    <input id="txtIdTipo" type="hidden" value="{{$tipo->id}}" name="idTipo">
+    <input id="IdTipo" type="hidden" value="{{$tipo->id}}" name="idTipo">
     <button type="submit">Eliminar Tipo</button>
 </form>
 

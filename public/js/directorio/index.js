@@ -13,7 +13,10 @@ fetch('http://127.0.0.1:8000/api/directorios',{
             let fila = document.createElement('tr')
 
             let casilla = document.createElement('td')
-            casilla.innerText = element['nombre']
+            let ruta = document.createElement('a')
+            ruta.setAttribute("href","/directorios/"+element['id'])
+            casilla.appendChild(ruta)
+            ruta.innerText = element['nombre']
             fila.appendChild(casilla)
 
             casilla = document.createElement('td')
