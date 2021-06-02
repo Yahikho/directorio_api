@@ -34,7 +34,7 @@ class SpTipoContacto extends Migration
                     delete from directorios.tipo_contacto
                     where id = _id;
                 when 'select' then
-                    select descripcion from directorios.tipo_contacto;
+                    select id,descripcion from directorios.tipo_contacto;
                 when 'id' then
                  	select * from directorios.directorio
                  	where id_tipo_contacto = _id;
