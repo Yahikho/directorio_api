@@ -14,7 +14,7 @@ Directorio_api es un CRUD que funciona a partir de servicio API REST y consta de
     <li>5. Ejecuta las migraciones</li>
         <small>* php artisan migrate<small>
     <li>6. Ejecuta las semillas</li>
-        <small>* php db:seed<small>
+        <small>* php artisan db:seed<small>
 <lu>
     
 <p>EL proyecto consta de dos DATAS para la gestion de informacón: Directoios y Tipo Contacto
