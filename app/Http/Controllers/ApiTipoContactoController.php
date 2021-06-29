@@ -21,6 +21,10 @@ class ApiTipoContactoController extends Controller
         
     }
 
+    public function show(TipoContacto $tipo){
+        return $tipo;
+    }
+
     public function store(CrearTipoRequest $request){
 
 
@@ -36,14 +40,14 @@ class ApiTipoContactoController extends Controller
 
     public function update(UpdateTipoRequest $request, TipoContacto $tipo){
 
-        return $request;
+        //return $request;
 
-        // DB::select('CALL sp_tipoContacto(?,?,?)', array($tipo->id,$request->input('descripcion'),'edit'));
+        DB::select('CALL sp_tipoContacto(?,?,?)', array($tipo->id,$request->input('descripcion'),'edit'));
 
-        // return response()->json([
-        //     'message' => "Tipo contacto actualizado",
-        //     'respounse' => true
-        // ],200);
+        return response()->json([
+            'message' => "Tipo contacto actualizado",
+            'respounse' => true
+        ],200);
 
     }
 
@@ -53,12 +57,16 @@ class ApiTipoContactoController extends Controller
         $usoFK =  DB::select('CALL sp_tipoContacto(?,?,?)', array($tipo->id,0,'id'));
 
         if(empty($usoFK)){
+            
             DB::select('CALL sp_tipoContacto(?,?,?)', array($tipo->id,0,'delete'));
+
             return response()->json([
                 'message' => "Tipo contacto eliminado",
                 'respounse' => true
             ]);
+
         }else{
+
             return response()->json([
                 'message' => "Tipo contacto no se puede eliminar (Hay relacion entre tablas)",
                 'respounse' => false

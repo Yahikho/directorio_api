@@ -9,10 +9,12 @@ formDestroy.addEventListener('submit', (e) => {
     })
     .then(res => res.json())
     .then(response => {
-        if(response.response){
+        if(response){
             alert(response.message)
+            location.href = "http://127.0.0.1:8000/tipos"
         }else{
             alert(response.message)
+            location.href = "http://127.0.0.1:8000/tipos"
         }
     })
 })

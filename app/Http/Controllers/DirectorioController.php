@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CrearTipoRequest;
 use App\Models\Directorio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -36,4 +37,5 @@ class DirectorioController extends Controller
         return view('directorio.edit', compact('directorio','tipoContacto'));
 
     }
+
 }

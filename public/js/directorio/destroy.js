@@ -9,11 +9,15 @@ formDestroy.addEventListener('submit', (e) => {
     })
     .then(res => res.json())
     .then(response => {
-        if(response.response){
-            alert(response.message)
+        if(response){
+            alert('Directorio eliminado')
+            location.href = "http://127.0.0.1:8000/directorios";
         }else{
-            alert(response.message)
+            alert('Solicitud no aprobada')
         }
+    })
+    .catch(function(){
+        alert("Error de respuesta");
     })
 })
 

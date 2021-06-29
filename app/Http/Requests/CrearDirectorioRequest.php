@@ -24,10 +24,26 @@ class CrearDirectorioRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|min:5|max:30|unique:directorio,nombre',
-            'telefono' => 'min:5|max:30|unique:directorio,telefono',
-            'email' => 'email|min:5|max:30|unique:directorio,email',
-            'direccion' => 'min:5|max:30|unique:directorio,nombre'
+            'nombre'    => 'required|min:2|max:100|unique:directorio,nombre',
+            'telefono'  => 'nullable|numeric|regex:/^([0-9])*$/|not_in:0|min:99999|max:9999999999|not_in:0|unique:directorio,telefono',
+            'email'     => 'nullable|email|min:5|max:100|unique:directorio,email',
+            'direccion' => 'nullable|min:5|max:100'
         ];
+    }
+
+    public function attributes()
+    {
+        return [
+            
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'telefono.min'=>'El campo :attribute de tener por lo menos 6 caracteres',
+            'telefono.max'=>'El campo :attribute de tener maximo 10 caracteres'
+        ];
+        
     }
 }

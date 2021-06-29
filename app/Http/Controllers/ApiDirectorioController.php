@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CrearDirectorioRequest;
+use App\Http\Requests\EditarDirectorioRequest;
+use App\Http\Requests\UpdateTipoRequest;
 use Illuminate\Http\Request;
 use App\Models\Directorio;
 use GrahamCampbell\ResultType\Result;
@@ -11,8 +13,7 @@ use Illuminate\Support\Facades\DB;
 class ApiDirectorioController extends Controller
 {
     public function index(){
-
-        //$diretotios = Directorio::all();
+        
         $diretotios = DB::table('directorio')
             ->select('directorio.id','directorio.nombre','tipo_contacto.descripcion','directorio.telefono','directorio.email','directorio.direccion')
             ->join('tipo_contacto','directorio.id_tipo_contacto','=','tipo_contacto.id')
@@ -29,11 +30,14 @@ class ApiDirectorioController extends Controller
 
     }
 
+    public function show(Directorio $directorio){
+        return $directorio;
+    }
+
     public function store(CrearDirectorioRequest $request){
 
         $directorio = $request->all();
         Directorio::create($directorio);
-
         return response()->json([
             'respounse' => true,
             'message' => "Directorio creado",
@@ -53,16 +57,15 @@ class ApiDirectorioController extends Controller
 
     }
     
-    public function update(Request $request, Directorio $directorio){
+    public function update(EditarDirectorioRequest $request, Directorio $directorio){
         
         $input = $request->all();
         $directorio->update($input);
 
-        return (array($directorio, $input));
-        // return response()->json([
-        //     'response' => true,
-        //     'message' => "Directorio Actualizado"
-        // ],200);
+        return response()->json([
+            'response' => true,
+            'message' => "Directorio Actualizado"
+        ],200);
 
     }
 }
